@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+
+{% block main %}
+
+{% if oldpass%}
+<h1>Błędne wpisane aktualne hasło! Próba zmiany hasła odrzucona.</h1><br>
+{% endif %}
+
+{% if repeat%}
+<h1>Wpisane hasła się nie zgadzają. Wprowadź je raz jeszcze!</h1><br>
+{% endif %}
+
+{% if error%}
+<h1 style="color:red;">Zmiana hasła zakończona niepowodzeniem!<br>Użyto niedozwolonych znaków. Dozwolone są tylko liczby i litery. Długość hasła musi się ponadto mieścić w przedziale &lt;4,16&Gt;</4></h1><br>
+{% endif %}
+
+{% if logged %}
+Zalogowano jako {{ login }}<br>Zmień hasło: <br><br>
+<form action={{ url_for('changePassword') }} method="POST">
+	<div>
+		<label for="password"><b>Aktualne hasło:</b></label>
+		<input type="password" placeholder="Wprowadź hasło" id="password" name="password" required>
+	</div>
+	<div>
+		<label for="password2"><b>Nowe hasło:</b></label>
+		<input type="password" placeholder="Wprowadź hasło" id="password2" name="password2" required>
+	</div>
+	<div>
+		<label for="password3"><b>Potwierdź nowe hasło:</b></label>
+		<input type="password" placeholder="Wprowadź hasło" id="password3" name="password3" required>
+	</div>
+	<div>
+		<input type="submit" value="Zmień hasło">
+	</div> 
+</form>	
+{% else %}
+<h2>Nie jesteś zalogowany/-a! Przejdź na stronę logowania.</h2><br>
+{% endif %}
+
+{% endblock %}

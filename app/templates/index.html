@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+
+{% block main %}
+Menu główne projektu. <br><br>
+
+{% if error%}
+<h1 style="color:red;">Kreacja notatki zakończona niepowodzeniem!<br>Użyto niedozwolonych znaków. Dozwolone są tylko liczby i litery. Długość notatki musi się ponadto mieścić w przedziale &lt;2,30&Gt;</4></h1><br>
+{% endif %}
+
+{% if session %}
+<h2 style="color:green;">Zalogowano!</h2><br>
+{% else %}
+<h2>Nie jesteś zalogowany/-a! Przejdź na stronę logowania.</h2><br>
+{% endif %}
+
+{% if registered %}
+<h2 style="color:green;">Konto zostało {{ login }} utworzone!</h2> (jeśli użytkownik był zalogowany, nastąpiło wylogowanie)<br>
+<h3>Entropia hasła wynosi {{ entropy }}.</h3><br>
+{% endif %}
+
+{% if unsuccessful%}
+<h1>Liczba nieudanych prób logowania: {{ unsuccessful }}</h1><br>
+{% endif %}
+
+{% if newpass%}
+<h1>Hasło zostało pomyślnie zmienione! Nastąpiło wylogowanie.</h1><br>
+{% endif %}
+
+{% endblock %}

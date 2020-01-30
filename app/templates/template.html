@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Home</title>
+	</head>
+	
+	<body>
+		<nav>
+            <a href="/">Strona główna</a><br>
+			<a href="/login">Logowanie</a><br>
+			<a href="/register">Rejestracja</a><br>
+			<a href="/changePassword">Zmień hasło</a><br>
+			<a href="/notes">Notatki</a><br>
+			<a href="/loginlog">Ostatnie udane logowania na to konto</a><br><br>
+			<a href="/logout">Wyloguj</a><br>
+		</nav>
+		<br><br>
+		<main>
+			<section>
+				{% block main %} {% endblock %}
+			</section>
+		</main>
+
+</html>

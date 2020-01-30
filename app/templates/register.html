@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block main %}
+Zarówno hasło, jak i login mogą się składać jedynie z cyfr oraz małych i wielkich liter. Ich długość musi wynosić między 4, a 16.
+<br>
+
+{% if error%}
+<h1 style="color:red;">Rejestracja zakończona niepowodzeniem!<br>Użyto niedozwolonych znaków. Dozwolone są tylko liczby i litery. Długość loginu i hasła musi się ponadto mieścić w przedziale &lt;4,16&Gt;</4></h1><br>
+{% endif %}
+
+<form action={{ url_for('register') }} method="POST">
+	<div>
+		<label for="login"><b>Login:</b></label>
+		<input type="text" placeholder="Wprowadź login" name="login" id="login" required>
+	</div>
+	<div>
+		<label for="password"><b>Hasło:</b></label>
+		<input type="password" placeholder="Wprowadź hasło" id="password" name="password" required>
+	</div>
+	<div>
+		<input type="submit" value="Zarejestruj">
+	</div> 
+</form>	
+
+<br>
+{% if taken %}
+<h2 style="color:red;">Rejestracja zakończona niepowodzeniem (login zajęty)</h2><br>
+{% else %}
+<h2></h2><br>
+{% endif %}
+
+{% endblock %}

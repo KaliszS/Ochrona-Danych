@@ -1,0 +1,41 @@
+{% extends "template.html" %}
+
+{% block main %}
+
+{% if session %}
+Notatka może zawierac maksymalnie 30 znaków (minimalnie 2).
+<form action={{ url_for('notes') }} method="POST">
+	<div>
+		<label for="note"><b>Treść notatki:</b></label>
+		<input type="text" placeholder="Wprowadź treść notatki" name="note" id="note" required>
+	</div>
+	<div>
+        <label><b>Kto ma dostęp poza autorem:</b></label><br>
+        <input type="checkbox" name="public" value="public"> Publiczna<br>
+        {% for user in users %}
+        <input type="checkbox" name={{ user }} value={{ user }}> {{ user }}<br>
+        {% endfor %}
+	</div>
+	<div>
+		<br><input type="submit" value="Utwórz notatkę">
+	</div> 
+</form>	<br><br>
+{% else %}
+<h2>Nie jesteś zalogowany/-a! Tylko zalogowani użytkownicy mogą dodawać notatki!</h2><br>
+{% endif %}
+
+<h1>Publiczne notatki:</h1>
+{% for pub in public %}
+{{ pub }} <hr>
+{% endfor %}
+
+{% if session %}
+<br><br>
+<h1>Prywatne notatki:</h1>
+{% for priv in private %}
+{{ priv }} <hr>
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

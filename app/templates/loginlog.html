@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+
+{% block main %}
+
+{% if session%}
+Zalogowano jako {{ login }}<br>
+<h1>Ostatnie <strong>udane</strong> próby zalogowania się na to konto:</h1><hr><br>
+{% for log in logs %}
+Login <span style="color: green;">udany</span> ( {{ log }} ) <hr>
+{% endfor %}
+
+{% else %}
+<h1>Dostęp do tej sekcji wymaga zalogowania się!</h1><br>
+{% endif %}
+
+
+{% endblock %}

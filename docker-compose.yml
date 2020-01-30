@@ -1,0 +1,16 @@
+version: '3'
+services:
+    app:
+        build:
+            context: ./app
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"
+        volumes:
+            - ./Projekt:/Projekt
+        depends_on:
+          - redis
+        environment: 
+            FLASK_DEBUG: development
+    redis:
+        image: "redis"
