@@ -10,7 +10,5 @@ services:
             - ./Projekt:/Projekt
         depends_on:
           - redis
-        environment: 
-            FLASK_DEBUG: development
     redis:
         image: "redis"
